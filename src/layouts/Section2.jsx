@@ -104,7 +104,7 @@ const Section2 = ({ classes }) => {
       <div className={classes.tableOrViz}>
         Explore topicwise
         <div className={classes.filters}>
-          <label {...getLabelProps()}>Choose an element:</label>
+          <label {...getLabelProps()}>Choose an topic:</label>
           <div className={classes.select}>
             <div {...getComboboxProps()}>
               <input className={classes.textSearch} {...getInputProps()} />
