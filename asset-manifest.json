@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/hackathon-10acious-frontend/static/js/main.f2e6f0da.chunk.js",
-    "main.js.map": "/hackathon-10acious-frontend/static/js/main.f2e6f0da.chunk.js.map",
+    "main.js": "/hackathon-10acious-frontend/static/js/main.f69383c9.chunk.js",
+    "main.js.map": "/hackathon-10acious-frontend/static/js/main.f69383c9.chunk.js.map",
     "runtime-main.js": "/hackathon-10acious-frontend/static/js/runtime-main.487559ec.js",
     "runtime-main.js.map": "/hackathon-10acious-frontend/static/js/runtime-main.487559ec.js.map",
-    "static/js/2.dbc3b748.chunk.js": "/hackathon-10acious-frontend/static/js/2.dbc3b748.chunk.js",
-    "static/js/2.dbc3b748.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.dbc3b748.chunk.js.map",
+    "static/js/2.85dd7688.chunk.js": "/hackathon-10acious-frontend/static/js/2.85dd7688.chunk.js",
+    "static/js/2.85dd7688.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.85dd7688.chunk.js.map",
     "index.html": "/hackathon-10acious-frontend/index.html",
-    "static/js/2.dbc3b748.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.dbc3b748.chunk.js.LICENSE.txt",
+    "static/js/2.85dd7688.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.85dd7688.chunk.js.LICENSE.txt",
     "static/media/AndadaPro-Regular.0c19c230.ttf": "/hackathon-10acious-frontend/static/media/AndadaPro-Regular.0c19c230.ttf",
     "static/media/Sora-Bold.5255f50b.ttf": "/hackathon-10acious-frontend/static/media/Sora-Bold.5255f50b.ttf",
     "static/media/Sora-ExtraBold.fcb78f93.ttf": "/hackathon-10acious-frontend/static/media/Sora-ExtraBold.fcb78f93.ttf",
@@ -17,7 +17,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.487559ec.js",
-    "static/js/2.dbc3b748.chunk.js",
-    "static/js/main.f2e6f0da.chunk.js"
+    "static/js/2.85dd7688.chunk.js",
+    "static/js/main.f69383c9.chunk.js"
   ]
 }
