@@ -3,7 +3,7 @@ import withStyles from "react-jss"
 import { Table } from "../components"
 import { MONTH_LABELS, FASHION_BRANDS, TABLE_HEADINGS } from "../data/filters"
 import { condeTopicsDistribution } from "../data/conde-topics-distribution"
-import { stringCompare } from "../utils/helper"
+import { stringCompare, formatData } from "../utils/helper"
 
 const styles = {
   container: {
@@ -41,15 +41,7 @@ const Section1 = ({ classes }) => {
   })
 
   const INITIAL_DATA = useMemo(
-    () =>
-      condeTopicsDistribution.map((d, i) => ({
-        id: i,
-        admantx: d.admantx,
-        // admantx: d.admantx.split("::"),
-        percent: `${(d.percentageOfArticles * 100).toFixed(2)}%`,
-        brand: d.brand.charAt(0).toUpperCase() + d.brand.slice(1),
-        month: d.month,
-      })),
+    () => formatData(condeTopicsDistribution, 1, "conde"),
     []
   )
   const [data, setData] = useState(INITIAL_DATA)
