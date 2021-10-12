@@ -1,17 +1,23 @@
 {
   "files": {
-    "main.js": "/hackathon-10acious-frontend/static/js/main.62abb45a.chunk.js",
-    "main.js.map": "/hackathon-10acious-frontend/static/js/main.62abb45a.chunk.js.map",
+    "main.js": "/hackathon-10acious-frontend/static/js/main.2aed774c.chunk.js",
+    "main.js.map": "/hackathon-10acious-frontend/static/js/main.2aed774c.chunk.js.map",
     "runtime-main.js": "/hackathon-10acious-frontend/static/js/runtime-main.487559ec.js",
     "runtime-main.js.map": "/hackathon-10acious-frontend/static/js/runtime-main.487559ec.js.map",
-    "static/js/2.f3689f53.chunk.js": "/hackathon-10acious-frontend/static/js/2.f3689f53.chunk.js",
-    "static/js/2.f3689f53.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.f3689f53.chunk.js.map",
+    "static/js/2.dbc3b748.chunk.js": "/hackathon-10acious-frontend/static/js/2.dbc3b748.chunk.js",
+    "static/js/2.dbc3b748.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.dbc3b748.chunk.js.map",
     "index.html": "/hackathon-10acious-frontend/index.html",
-    "static/js/2.f3689f53.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.f3689f53.chunk.js.LICENSE.txt"
+    "static/js/2.dbc3b748.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.dbc3b748.chunk.js.LICENSE.txt",
+    "static/media/AndadaPro-Regular.0c19c230.ttf": "/hackathon-10acious-frontend/static/media/AndadaPro-Regular.0c19c230.ttf",
+    "static/media/Sora-Bold.5255f50b.ttf": "/hackathon-10acious-frontend/static/media/Sora-Bold.5255f50b.ttf",
+    "static/media/Sora-ExtraBold.fcb78f93.ttf": "/hackathon-10acious-frontend/static/media/Sora-ExtraBold.fcb78f93.ttf",
+    "static/media/Sora-Medium.33e6305d.ttf": "/hackathon-10acious-frontend/static/media/Sora-Medium.33e6305d.ttf",
+    "static/media/Sora-Regular.9d1a5a24.ttf": "/hackathon-10acious-frontend/static/media/Sora-Regular.9d1a5a24.ttf",
+    "static/media/Sora-SemiBold.514ec7d4.ttf": "/hackathon-10acious-frontend/static/media/Sora-SemiBold.514ec7d4.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.487559ec.js",
-    "static/js/2.f3689f53.chunk.js",
-    "static/js/main.62abb45a.chunk.js"
+    "static/js/2.dbc3b748.chunk.js",
+    "static/js/main.2aed774c.chunk.js"
   ]
 }
