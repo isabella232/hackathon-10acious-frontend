@@ -42,7 +42,6 @@ const styles = {
     composes: "$td",
     borderBottom: "3px solid #A09F9F",
     background: "white",
-    justifyContent: "center",
     cursor: "pointer",
     "&:hover": {
       fontWeight: 600,
@@ -80,7 +79,7 @@ const Table = ({ classes, columns, data }) => {
           {data.map((d) => (
             <div className={classes.row} key={d.id}>
               <div className={classes.td}>{d.admantx}</div>
-              <div className={classes.td}>{d.percentageOfArticles}</div>
+              <div className={classes.td}>{d.percent}</div>
               <div className={classes.td}>{d.brand}</div>
               <div className={classes.td}>{d.month}</div>
             </div>

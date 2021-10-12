@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react"
 import withStyles from "react-jss"
-import Table from "../components/Table"
+import { Table } from "../components"
 import { MONTH_LABELS, FASHION_BRANDS, TABLE_HEADINGS } from "../data/filters"
 import { condeTopicsDistribution } from "../data/conde-topics-distribution"
 import { stringCompare } from "../utils/helper"
@@ -46,7 +46,7 @@ const Section1 = ({ classes }) => {
         id: i,
         admantx: d.admantx,
         // admantx: d.admantx.split("::"),
-        percentageOfArticles: d.percentageOfArticles,
+        percent: `${(d.percentageOfArticles * 100).toFixed(2)}%`,
         brand: d.brand.charAt(0).toUpperCase() + d.brand.slice(1),
         month: d.month,
       })),
@@ -71,19 +71,16 @@ const Section1 = ({ classes }) => {
 
   useEffect(() => {
     const { month, brand } = filters
-    if (month === MONTH_LABELS[0] && brand === FASHION_BRANDS[0]) {
-      setData(INITIAL_DATA)
-    } else {
-      setData(
-        INITIAL_DATA.filter(
-          (d) => stringCompare(d.brand, brand) && stringCompare(d.month, month)
-        )
+    setData(
+      INITIAL_DATA.filter(
+        (d) => stringCompare(d.brand, brand) && stringCompare(d.month, month)
       )
-    }
+    )
   }, [filters])
 
   return (
     <div className={classes.container}>
+      <h1>Section 1</h1>
       <div className={classes.filters}>
         <select
           value={filters.month}
