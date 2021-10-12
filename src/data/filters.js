@@ -1,5 +1,3 @@
-import { condeTrendsDistribution } from "../data/conde-trends-distribution"
-
 export const MONTH_LABELS = [
   "All Months",
   "Jan",
