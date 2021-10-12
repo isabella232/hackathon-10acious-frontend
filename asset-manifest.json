@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/trend-analysis/static/js/main.62abb45a.chunk.js",
-    "main.js.map": "/trend-analysis/static/js/main.62abb45a.chunk.js.map",
-    "runtime-main.js": "/trend-analysis/static/js/runtime-main.0144283c.js",
-    "runtime-main.js.map": "/trend-analysis/static/js/runtime-main.0144283c.js.map",
-    "static/js/2.f3689f53.chunk.js": "/trend-analysis/static/js/2.f3689f53.chunk.js",
-    "static/js/2.f3689f53.chunk.js.map": "/trend-analysis/static/js/2.f3689f53.chunk.js.map",
-    "index.html": "/trend-analysis/index.html",
-    "static/js/2.f3689f53.chunk.js.LICENSE.txt": "/trend-analysis/static/js/2.f3689f53.chunk.js.LICENSE.txt"
+    "main.js": "/hackathon-10acious-frontend/static/js/main.62abb45a.chunk.js",
+    "main.js.map": "/hackathon-10acious-frontend/static/js/main.62abb45a.chunk.js.map",
+    "runtime-main.js": "/hackathon-10acious-frontend/static/js/runtime-main.487559ec.js",
+    "runtime-main.js.map": "/hackathon-10acious-frontend/static/js/runtime-main.487559ec.js.map",
+    "static/js/2.f3689f53.chunk.js": "/hackathon-10acious-frontend/static/js/2.f3689f53.chunk.js",
+    "static/js/2.f3689f53.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.f3689f53.chunk.js.map",
+    "index.html": "/hackathon-10acious-frontend/index.html",
+    "static/js/2.f3689f53.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.f3689f53.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0144283c.js",
+    "static/js/runtime-main.487559ec.js",
     "static/js/2.f3689f53.chunk.js",
     "static/js/main.62abb45a.chunk.js"
   ]
