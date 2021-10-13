@@ -6,6 +6,7 @@ import { S2_TABLE_HEADINGS } from "../data/filters"
 import { condeTrendsDistribution } from "../data/conde-trends-distribution"
 import { stringCompare, formatData } from "../utils/helper"
 import colors from "../data/colors"
+import { borderRadius } from "../data/globalStyles"
 
 const styles = {
   container: {
@@ -14,9 +15,49 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
   },
+  sectionTitle: {
+    fontSize: "calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)))",
+  },
   filters: {
     display: "flex",
-    flexDirection: "row",
+    // justifyContent: "flex-start",
+    justifyContent: "center",
+    width: "100%",
+    maxWidth: "1100px",
+    marginBottom: "1rem",
+  },
+  button: {
+    margin: "0.8rem",
+    marginLeft: 0,
+    fontSize: "calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))",
+    padding: "0.5rem 1rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textDecoration: "none",
+    textAlign: "center",
+    boxSizing: "border-box",
+    transition: "background 0.2s ease-in-out, color 0.3s ease-in-out",
+    border: `2px solid ${colors.purple}`,
+    background: colors.white,
+    color: colors.purple,
+    borderRadius: borderRadius,
+  },
+  activeButton: {
+    backgroundColor: colors.purple,
+    color: colors.white,
+  },
+  tableFilters: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  tableOrViz: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    width: "100%",
+    maxWidth: "1100px",
   },
   dataTable: {
     display: "flex",
@@ -24,25 +65,77 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     width: "100%",
-    maxWidth: "1000px",
+    maxWidth: "1100px",
   },
   select: {
     position: "relative",
+    display: "flex",
+    width: "100%",
+  },
+  selectLabel: {
+    fontSize: "calc(10px + (16 - 10) * ((100vw - 300px) / (1600 - 300)))",
+    marginBottom: "0.5rem",
   },
   textSearch: {
     width: "400px",
+    padding: "0.5rem 1rem",
+    borderRadius: borderRadius,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    color: colors.black,
+    // reset styles
+    boxSizing: "content-box",
+    margin: 0,
+    // border: `1px solid ${colors.lightGrey}`,
+    border: `1px solid ${colors.lightGrey}`,
+    borderRight: 0,
+    fontSize: "calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))",
+  },
+  showDropdown: {
+    fontSize: "calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))",
+    padding: "0.5rem 1rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textDecoration: "none",
+    textAlign: "center",
+    boxSizing: "border-box",
+    border: `1px solid ${colors.lightGrey}`,
+    borderRadius: borderRadius,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    margin: 0,
+    background: colors.lightGrey,
+    color: colors.black,
+    transition: "background 0.2s ease-in-out, color 0.3s ease-in-out",
+    // "&:hover": {
+    //   background: colors.purple,
+    //   color: colors.white,
+    // },
   },
   optionsContainer: {
     display: "flex",
     justifyContent: "flex-start",
     flexDirection: "column",
     position: "absolute",
+    top: "40px",
     zIndex: "100",
     background: colors.white,
-    maxHeight: "200px",
-    border: `1px solid ${colors.black}`,
+    maxHeight: "250px",
+    maxWidth: "400px",
+    border: `1px solid ${colors.purple}`,
+    borderRadius: borderRadius,
     overflowY: "scroll",
     cursor: "default",
+  },
+  option: {
+    padding: "0.7rem 1rem",
+    borderRadius: borderRadius,
+  },
+  fullWidth: { width: "100%", display: "flex" },
+  vizContainer: {
+    width: "100%",
+    minHeight: "70vh",
   },
 }
 
@@ -96,45 +189,74 @@ const Section2 = ({ classes }) => {
 
   return (
     <div className={classes.container}>
-      <h1>Section 2</h1>
+      <h1 className={classes.sectionTitle}>Section 2</h1>
       <div className={classes.filters}>
-        <button onClick={() => setMode("viz")}>Viz</button>
-        <button onClick={() => setMode("table")}>Table</button>
+        <button
+          className={`${mode === "table" ? classes.activeButton : ""} ${
+            classes.button
+          }`}
+          onClick={() => setMode("table")}>
+          Table
+        </button>
+        <button
+          className={`${mode === "viz" ? classes.activeButton : ""} ${
+            classes.button
+          }`}
+          onClick={() => setMode("viz")}>
+          Viz
+        </button>
       </div>
       <div className={classes.tableOrViz}>
-        Explore topicwise
-        <div className={classes.filters}>
-          <label {...getLabelProps()}>Choose an topic:</label>
-          <div className={classes.select}>
-            <div {...getComboboxProps()}>
-              <input className={classes.textSearch} {...getInputProps()} />
-              <button
-                type="button"
-                {...getToggleButtonProps()}
-                aria-label="toggle searchable dropdown">
-                &#8595;
-              </button>
-            </div>
-            <div className={classes.optionsContainer} {...getMenuProps()}>
-              {isOpen &&
-                dropdown.map((item, index) => (
-                  <div
+        {mode === "table" ? (
+          <>
+            <div className={classes.tableFilters}>
+              <label className={classes.selectLabel} {...getLabelProps()}>
+                Choose an topic:
+              </label>
+              <div className={classes.select}>
+                <div {...getComboboxProps()} className={classes.fullWidth}>
+                  <input className={classes.textSearch} {...getInputProps()} />
+                  <button
+                    className={classes.showDropdown}
+                    type="button"
+                    {...getToggleButtonProps()}
                     style={
-                      highlightedIndex === index
-                        ? { backgroundColor: "#bde4ff" }
+                      isOpen
+                        ? {
+                            backgroundColor: colors.purple,
+                            color: colors.white,
+                          }
                         : {}
                     }
-                    key={`${item}${index}`}
-                    {...getItemProps({ item, index })}>
-                    {item}
-                  </div>
-                ))}
+                    aria-label="toggle searchable dropdown">
+                    &#8595;
+                  </button>
+                </div>
+                <div className={classes.optionsContainer} {...getMenuProps()}>
+                  {isOpen &&
+                    dropdown.map((item, index) => (
+                      <div
+                        className={classes.option}
+                        style={
+                          highlightedIndex === index
+                            ? { backgroundColor: colors.highlightBlue }
+                            : {}
+                        }
+                        key={`${item}${index}`}
+                        {...getItemProps({ item, index })}>
+                        {item}
+                      </div>
+                    ))}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={classes.dataTable}>
-          <Table columns={S2_TABLE_HEADINGS} data={data} />
-        </div>
+            <div className={classes.dataTable}>
+              <Table columns={S2_TABLE_HEADINGS} data={data} />
+            </div>
+          </>
+        ) : (
+          <div className={classes.vizContainer}></div>
+        )}
       </div>
     </div>
   )

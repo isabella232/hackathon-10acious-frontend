@@ -4,6 +4,8 @@ import { Table } from "../components"
 import { MONTH_LABELS, FASHION_BRANDS, TABLE_HEADINGS } from "../data/filters"
 import { condeTopicsDistribution } from "../data/conde-topics-distribution"
 import { stringCompare, formatData } from "../utils/helper"
+import { borderRadius } from "../data/globalStyles"
+import colors from "../data/colors"
 
 const styles = {
   container: {
@@ -11,6 +13,9 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+  },
+  sectionTitle: {
+    fontSize: "calc(18px + (28 - 18) * ((100vw - 300px) / (1600 - 300)))",
   },
   filters: {
     display: "flex",
@@ -22,7 +27,18 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     width: "100%",
-    maxWidth: "1000px",
+    maxWidth: "1100px",
+  },
+  select: {
+    width: "100px",
+    padding: "0.5rem 1rem",
+    borderRadius: borderRadius,
+    color: colors.black,
+    // reset styles
+    boxSizing: "content-box",
+    margin: "0.5rem",
+    border: `1px solid ${colors.lightGrey}`,
+    fontSize: "calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))",
   },
 }
 
@@ -72,9 +88,10 @@ const Section1 = ({ classes }) => {
 
   return (
     <div className={classes.container}>
-      <h1>Section 1</h1>
+      <h1 className={classes.sectionTitle}>Section 1</h1>
       <div className={classes.filters}>
         <select
+          className={classes.select}
           value={filters.month}
           onChange={(e) => handleChange(e, "month")}>
           {months.map(({ id, text }) => (
@@ -84,6 +101,7 @@ const Section1 = ({ classes }) => {
           ))}
         </select>
         <select
+          className={classes.select}
           value={filters.brand}
           onChange={(e) => handleChange(e, "brand")}>
           {brands.map(({ id, text }) => (

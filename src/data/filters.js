@@ -16,14 +16,14 @@ export const FASHION_BRANDS = ["All Brands", "Allure", "Glamour", "Vogue"]
 export const TABLE_HEADINGS = [
   "Admantx Labels",
   "Percentage of Articles",
-  "Brand",
-  "Month",
+  // "Brand",
+  // "Month",
 ]
 
 // Section 2
 export const S2_TABLE_HEADINGS = [
   "Admantx Labels",
   "Percentage of Pageviews",
-  "Brand",
-  "Month",
+  // "Brand",
+  // "Month",
 ]
