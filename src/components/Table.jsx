@@ -18,6 +18,9 @@ const styles = {
     flex: "1 1 auto",
     overflow: "auto",
     borderRadius: borderRadius,
+    border: `2px solid ${colors.lightGrey}`,
+    borderLeft: 0,
+    borderRight: 0,
   },
   th: {
     display: "flex",
@@ -58,7 +61,7 @@ const styles = {
     display: "inline-block",
     minWidth: "100%",
     position: "relative",
-    height: "70vh",
+    height: "65vh",
     "& > :nth-child(odd)": {
       background: colors.tableRowBG,
       borderLeft: `3px solid ${colors.purple}`,
