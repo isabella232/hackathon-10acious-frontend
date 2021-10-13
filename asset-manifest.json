@@ -1,18 +1,25 @@
 {
   "files": {
-    "main.js": "/hackathon-10acious-frontend/static/js/main.c8a96841.chunk.js",
-    "main.js.map": "/hackathon-10acious-frontend/static/js/main.c8a96841.chunk.js.map",
-    "runtime-main.js": "/hackathon-10acious-frontend/static/js/runtime-main.f76be4d5.js",
-    "runtime-main.js.map": "/hackathon-10acious-frontend/static/js/runtime-main.f76be4d5.js.map",
-    "static/js/2.4264c55a.chunk.js": "/hackathon-10acious-frontend/static/js/2.4264c55a.chunk.js",
-    "static/js/2.4264c55a.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.4264c55a.chunk.js.map",
-    "static/js/3.856aa2d6.chunk.js": "/hackathon-10acious-frontend/static/js/3.856aa2d6.chunk.js",
-    "static/js/3.856aa2d6.chunk.js.map": "/hackathon-10acious-frontend/static/js/3.856aa2d6.chunk.js.map",
-    "static/js/4.674bcfa4.chunk.js": "/hackathon-10acious-frontend/static/js/4.674bcfa4.chunk.js",
-    "static/js/4.674bcfa4.chunk.js.map": "/hackathon-10acious-frontend/static/js/4.674bcfa4.chunk.js.map",
+    "main.js": "/hackathon-10acious-frontend/static/js/main.1d62e1d9.chunk.js",
+    "main.js.map": "/hackathon-10acious-frontend/static/js/main.1d62e1d9.chunk.js.map",
+    "runtime-main.js": "/hackathon-10acious-frontend/static/js/runtime-main.6ec29adb.js",
+    "runtime-main.js.map": "/hackathon-10acious-frontend/static/js/runtime-main.6ec29adb.js.map",
+    "static/js/2.e8585c88.chunk.js": "/hackathon-10acious-frontend/static/js/2.e8585c88.chunk.js",
+    "static/js/2.e8585c88.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.e8585c88.chunk.js.map",
+    "static/css/3.c2e18bb2.chunk.css": "/hackathon-10acious-frontend/static/css/3.c2e18bb2.chunk.css",
+    "static/js/3.e5180a3a.chunk.js": "/hackathon-10acious-frontend/static/js/3.e5180a3a.chunk.js",
+    "static/js/3.e5180a3a.chunk.js.map": "/hackathon-10acious-frontend/static/js/3.e5180a3a.chunk.js.map",
+    "static/js/4.c0060bb2.chunk.js": "/hackathon-10acious-frontend/static/js/4.c0060bb2.chunk.js",
+    "static/js/4.c0060bb2.chunk.js.map": "/hackathon-10acious-frontend/static/js/4.c0060bb2.chunk.js.map",
+    "static/js/5.6c99becd.chunk.js": "/hackathon-10acious-frontend/static/js/5.6c99becd.chunk.js",
+    "static/js/5.6c99becd.chunk.js.map": "/hackathon-10acious-frontend/static/js/5.6c99becd.chunk.js.map",
+    "static/js/6.14fd7c20.chunk.js": "/hackathon-10acious-frontend/static/js/6.14fd7c20.chunk.js",
+    "static/js/6.14fd7c20.chunk.js.map": "/hackathon-10acious-frontend/static/js/6.14fd7c20.chunk.js.map",
     "index.html": "/hackathon-10acious-frontend/index.html",
-    "static/js/2.4264c55a.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.4264c55a.chunk.js.LICENSE.txt",
-    "static/js/3.856aa2d6.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/3.856aa2d6.chunk.js.LICENSE.txt",
+    "static/css/3.c2e18bb2.chunk.css.map": "/hackathon-10acious-frontend/static/css/3.c2e18bb2.chunk.css.map",
+    "static/js/2.e8585c88.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.e8585c88.chunk.js.LICENSE.txt",
+    "static/js/3.e5180a3a.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/3.e5180a3a.chunk.js.LICENSE.txt",
+    "static/js/4.c0060bb2.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/4.c0060bb2.chunk.js.LICENSE.txt",
     "static/media/Allure_black.9405aa6f.png": "/hackathon-10acious-frontend/static/media/Allure_black.9405aa6f.png",
     "static/media/AndadaPro-Regular.0c19c230.ttf": "/hackathon-10acious-frontend/static/media/AndadaPro-Regular.0c19c230.ttf",
     "static/media/Glamour_black.a86387a0.png": "/hackathon-10acious-frontend/static/media/Glamour_black.a86387a0.png",
@@ -32,8 +39,8 @@
     "static/media/vogue_all_months.d4fb8054.png": "/hackathon-10acious-frontend/static/media/vogue_all_months.d4fb8054.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f76be4d5.js",
-    "static/js/2.4264c55a.chunk.js",
-    "static/js/main.c8a96841.chunk.js"
+    "static/js/runtime-main.6ec29adb.js",
+    "static/js/2.e8585c88.chunk.js",
+    "static/js/main.1d62e1d9.chunk.js"
   ]
 }
