@@ -13,7 +13,7 @@ const globalStyles = {
     },
     p: {
       fontFamily: "sans-serif",
-      fontSize: "20px",
+      fontSize: "calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))",
     },
     body: {
       fontFamily: "Sora",
