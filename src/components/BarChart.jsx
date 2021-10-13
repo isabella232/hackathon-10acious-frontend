@@ -20,7 +20,6 @@ const styles = {
 }
 
 const BarChart = ({ classes, data, title }) => {
-  console.log(data)
   return (
     <>
       <h3 className={classes.title}>{title}</h3>
