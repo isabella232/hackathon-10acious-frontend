@@ -35,6 +35,14 @@ export const formatData = (rawData, section, dataType) => {
         brand: capitalize(d.brand),
         month: d.month,
       }))
+    } else if (dataType === "twitter") {
+      return rawData.map((d, i) => ({
+        id: i,
+        admantx: d.admantx,
+        // admantx: d.admantx.split("::"),
+        percent: formatPercent(d.percentageOfTweets),
+        month: d.month,
+      }))
     }
   } else if (section === 2) {
     if (dataType === "conde") {

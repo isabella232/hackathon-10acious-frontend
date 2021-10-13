@@ -3,6 +3,7 @@ import withStyles from "react-jss"
 import { Table } from "../components"
 import { MONTH_LABELS, FASHION_BRANDS, TABLE_HEADINGS } from "../data/filters"
 import { condeTopicsDistribution } from "../data/conde-topics-distribution"
+import { twitterTopicsDistribution } from "../data/twitter-topics-distribution"
 import { stringCompare, formatData } from "../utils/helper"
 import { borderRadius } from "../data/globalStyles"
 import colors from "../data/colors"
@@ -23,9 +24,9 @@ const styles = {
   },
   dataTable: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
-    flexDirection: "column",
+    // flexDirection: "column",
     width: "100%",
     maxWidth: "1100px",
   },
@@ -60,7 +61,12 @@ const Section1 = ({ classes }) => {
     () => formatData(condeTopicsDistribution, 1, "conde"),
     []
   )
+  const INITIAL_TWITTER_DATA = useMemo(
+    () => formatData(twitterTopicsDistribution, 1, "twitter"),
+    []
+  )
   const [data, setData] = useState(INITIAL_DATA)
+  const [twitterData, setTwitterData] = useState(INITIAL_TWITTER_DATA)
 
   const handleChange = (e, filterType) => {
     const data = e.target.value
@@ -83,6 +89,9 @@ const Section1 = ({ classes }) => {
       INITIAL_DATA.filter(
         (d) => stringCompare(d.brand, brand) && stringCompare(d.month, month)
       )
+    )
+    setTwitterData(
+      INITIAL_TWITTER_DATA.filter((d) => stringCompare(d.month, month))
     )
   }, [filters])
 
@@ -112,7 +121,8 @@ const Section1 = ({ classes }) => {
         </select>
       </div>
       <div className={classes.dataTable}>
-        <Table columns={TABLE_HEADINGS} data={data} />
+        <Table title="Conde" columns={TABLE_HEADINGS} data={data} />
+        <Table title="Twitter" columns={TABLE_HEADINGS} data={twitterData} />
       </div>
     </div>
   )

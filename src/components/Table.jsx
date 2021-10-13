@@ -7,8 +7,9 @@ import { Up, Down } from "../assets/icons"
 const styles = {
   container: {
     display: "flex",
+    flexDirection: "column",
     marginTop: "2rem",
-    width: "100%",
+    width: "47%",
     marginBottom: "3rem",
   },
   table: {
@@ -48,7 +49,7 @@ const styles = {
     wordBreak: "break-word",
     hyphens: "auto",
     margin: "0 0.2rem",
-    fontSize: "calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)))",
+    fontSize: "calc(10px + (16 - 10) * ((100vw - 300px) / (1600 - 300)))",
   },
   thtd: {
     composes: "$td",
@@ -84,9 +85,10 @@ const styles = {
   },
 }
 
-const Table = ({ classes, columns, data }) => {
+const Table = ({ classes, title, columns, data }) => {
   return (
     <div className={classes.container}>
+      <h3 className={classes.title}>{title}</h3>
       <div className={classes.table}>
         <div className={classes.th}>
           {columns.map((name, i) => (

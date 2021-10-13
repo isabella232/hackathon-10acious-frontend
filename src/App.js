@@ -18,7 +18,7 @@ const styles = {
 const App = ({ classes }) => {
   return (
     <div className={classes.app}>
-      {/* <Header /> */}
+      <Header />
       <Section1 />
       <ErrorBoundary>
         <Suspense fallback={<FallBack text="Fetching numbers..." />}>
