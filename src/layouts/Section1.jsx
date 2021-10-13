@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react"
 import withStyles from "react-jss"
 import { Table } from "../components"
-import { MONTH_LABELS, FASHION_BRANDS, TABLE_HEADINGS } from "../data/filters"
+import {
+  MONTH_LABELS,
+  FASHION_BRANDS,
+  TABLE_HEADINGS,
+  TABLE_HEADINGS_TWITTER,
+  TABLE_HEADINGS_CONDE,
+} from "../data/filters"
 import { condeTopicsDistribution } from "../data/conde-topics-distribution"
 import { twitterTopicsDistribution } from "../data/twitter-topics-distribution"
 import { stringCompare, formatData } from "../utils/helper"
@@ -14,6 +20,12 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    maxWidth: "1100px",
   },
   sectionTitle: {
     fontSize: "calc(18px + (28 - 18) * ((100vw - 300px) / (1600 - 300)))",
@@ -28,7 +40,9 @@ const styles = {
     alignItems: "center",
     // flexDirection: "column",
     width: "100%",
-    maxWidth: "1100px",
+    "@media only screen and (max-width: 650px)": {
+      flexWrap: "wrap",
+    },
   },
   select: {
     width: "100px",
@@ -97,32 +111,44 @@ const Section1 = ({ classes }) => {
 
   return (
     <div className={classes.container}>
-      <h1 className={classes.sectionTitle}>Section 1</h1>
-      <div className={classes.filters}>
-        <select
-          className={classes.select}
-          value={filters.month}
-          onChange={(e) => handleChange(e, "month")}>
-          {months.map(({ id, text }) => (
-            <option key={id} id={id}>
-              {text}
-            </option>
-          ))}
-        </select>
-        <select
-          className={classes.select}
-          value={filters.brand}
-          onChange={(e) => handleChange(e, "brand")}>
-          {brands.map(({ id, text }) => (
-            <option key={id} id={id}>
-              {text}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className={classes.dataTable}>
-        <Table title="Conde" columns={TABLE_HEADINGS} data={data} />
-        <Table title="Twitter" columns={TABLE_HEADINGS} data={twitterData} />
+      <div className={classes.wrapper}>
+        <h1 className={classes.sectionTitle}>Section 1</h1>
+        <div className={classes.filters}>
+          <select
+            className={classes.select}
+            value={filters.month}
+            onChange={(e) => handleChange(e, "month")}>
+            {months.map(({ id, text }) => (
+              <option key={id} id={id}>
+                {text}
+              </option>
+            ))}
+          </select>
+          <select
+            className={classes.select}
+            value={filters.brand}
+            onChange={(e) => handleChange(e, "brand")}>
+            {brands.map(({ id, text }) => (
+              <option key={id} id={id}>
+                {text}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className={classes.dataTable}>
+          <Table
+            title="Conde"
+            columns={TABLE_HEADINGS_CONDE}
+            data={data}
+            section={1}
+          />
+          <Table
+            title="Twitter"
+            columns={TABLE_HEADINGS_TWITTER}
+            data={twitterData}
+            section={1}
+          />
+        </div>
       </div>
     </div>
   )

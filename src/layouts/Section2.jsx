@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useMemo } from "react"
 import withStyles from "react-jss"
 import { useCombobox } from "downshift"
-import { Table } from "../components"
+import { Chart, Table } from "../components"
 import { S2_TABLE_HEADINGS } from "../data/filters"
 import { trendsDistribution } from "../data/trends-distribution"
-import { stringCompare, formatData } from "../utils/helper"
+import { stringCompare, formatData, formatChartData } from "../utils/helper"
 import colors from "../data/colors"
 import { borderRadius } from "../data/globalStyles"
 
@@ -15,15 +15,20 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
   },
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    maxWidth: "1100px",
+  },
   sectionTitle: {
     fontSize: "calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)))",
   },
   filters: {
     display: "flex",
-    // justifyContent: "flex-start",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    alignItems: "center",
     width: "100%",
-    maxWidth: "1100px",
     marginBottom: "1rem",
   },
   button: {
@@ -57,7 +62,6 @@ const styles = {
     alignItems: "flex-start",
     flexDirection: "column",
     width: "100%",
-    maxWidth: "1100px",
   },
   dataTable: {
     display: "flex",
@@ -65,7 +69,6 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     width: "100%",
-    maxWidth: "1100px",
   },
   select: {
     position: "relative",
@@ -176,6 +179,7 @@ const Section2 = ({ classes }) => {
   const activeFilter = useMemo(() => selectedItem, [selectedItem])
 
   const [data, setData] = useState(INITIAL_DATA)
+  const [chartData, setChartData] = useState()
 
   useEffect(() => {
     if (activeFilter)
@@ -184,76 +188,87 @@ const Section2 = ({ classes }) => {
       )
   }, [activeFilter])
 
+  useEffect(() => {
+    if (data.length) {
+      const vizData = formatChartData(data)
+      setChartData(vizData)
+    }
+  }, [data])
+
   return (
     <div className={classes.container}>
-      <h1 className={classes.sectionTitle}>Section 2</h1>
-      <div className={classes.filters}>
-        <button
-          className={`${mode === "table" ? classes.activeButton : ""} ${
-            classes.button
-          }`}
-          onClick={() => setMode("table")}>
-          Table
-        </button>
-        <button
-          className={`${mode === "viz" ? classes.activeButton : ""} ${
-            classes.button
-          }`}
-          onClick={() => setMode("viz")}>
-          Viz
-        </button>
-      </div>
-      <div className={classes.tableOrViz}>
-        {mode === "table" ? (
-          <>
-            <div className={classes.tableFilters}>
-              <label className={classes.selectLabel} {...getLabelProps()}>
-                Choose an topic:
-              </label>
-              <div className={classes.select}>
-                <div {...getComboboxProps()} className={classes.fullWidth}>
-                  <input className={classes.textSearch} {...getInputProps()} />
-                  <button
-                    className={classes.showDropdown}
-                    type="button"
-                    {...getToggleButtonProps()}
-                    style={
-                      isOpen
-                        ? {
-                            backgroundColor: colors.purple,
-                            color: colors.white,
-                          }
-                        : {}
-                    }
-                    aria-label="toggle searchable dropdown">
-                    &#8595;
-                  </button>
-                </div>
-                <div className={classes.optionsContainer} {...getMenuProps()}>
-                  {isOpen &&
-                    dropdown.map((item, index) => (
-                      <div
-                        className={classes.option}
-                        style={
-                          highlightedIndex === index
-                            ? { backgroundColor: colors.highlightBlue }
-                            : {}
+      <div className={classes.wrapper}>
+        <h1 className={classes.sectionTitle}>Section 2</h1>
+        <div className={classes.filters}>
+          <button
+            className={`${mode === "table" ? classes.activeButton : ""} ${
+              classes.button
+            }`}
+            onClick={() => setMode("table")}>
+            Data as a table!
+          </button>
+          <button
+            className={`${mode === "viz" ? classes.activeButton : ""} ${
+              classes.button
+            }`}
+            onClick={() => setMode("viz")}>
+            Visualize the data!
+          </button>
+        </div>
+        <div className={classes.tableOrViz}>
+          <div className={classes.tableFilters}>
+            <label className={classes.selectLabel} {...getLabelProps()}>
+              Choose an topic:
+            </label>
+            <div className={classes.select}>
+              <div {...getComboboxProps()} className={classes.fullWidth}>
+                <input className={classes.textSearch} {...getInputProps()} />
+                <button
+                  className={classes.showDropdown}
+                  type="button"
+                  {...getToggleButtonProps()}
+                  style={
+                    isOpen
+                      ? {
+                          backgroundColor: colors.purple,
+                          color: colors.white,
                         }
-                        key={`${item}${index}`}
-                        {...getItemProps({ item, index })}>
-                        {item}
-                      </div>
-                    ))}
-                </div>
+                      : {}
+                  }
+                  aria-label="toggle searchable dropdown">
+                  &#8595;
+                </button>
+              </div>
+              <div className={classes.optionsContainer} {...getMenuProps()}>
+                {isOpen &&
+                  dropdown.map((item, index) => (
+                    <div
+                      className={classes.option}
+                      style={
+                        highlightedIndex === index
+                          ? { backgroundColor: colors.highlightBlue }
+                          : {}
+                      }
+                      key={`${item}${index}`}
+                      {...getItemProps({ item, index })}>
+                      {item}
+                    </div>
+                  ))}
               </div>
             </div>
-            <div className={classes.dataTable}>
-              <Table columns={S2_TABLE_HEADINGS} data={data} section={2} />
+          </div>
+          {mode === "table" ? (
+            <>
+              <div className={classes.dataTable}>
+                <Table columns={S2_TABLE_HEADINGS} data={data} section={2} />
+              </div>
+            </>
+          ) : (
+            <div className={classes.vizContainer}>
+              <Chart data={chartData} />
             </div>
-          </>
-        ) : (
-          <div className={classes.vizContainer}></div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   )

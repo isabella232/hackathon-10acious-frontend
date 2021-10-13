@@ -1,6 +1,7 @@
 import React from "react"
 import withStyles from "react-jss"
 import colors from "../data/colors"
+import useWindowSize from "../hooks/useWindowSize"
 import { borderRadius } from "../data/globalStyles"
 import { Up, Down } from "../assets/icons"
 
@@ -9,7 +10,6 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     marginTop: "2rem",
-    // width: "47%",
     marginBottom: "3rem",
   },
   table: {
@@ -19,7 +19,7 @@ const styles = {
     flex: "1 1 auto",
     overflow: "auto",
     borderRadius: borderRadius,
-    border: `2px solid ${colors.lightGrey}`,
+    border: `4px solid ${colors.lightGrey}`,
     borderLeft: 0,
     borderRight: 0,
   },
@@ -86,11 +86,12 @@ const styles = {
 }
 
 const Table = ({ classes, title, columns, data, section }) => {
+  const { width } = useWindowSize()
   return (
     <div
       className={classes.container}
       style={{
-        width: section === 2 ? "100%" : "47%",
+        width: section === 2 ? "100%" : width <= 650 ? "100%" : "47%",
       }}>
       <h3 className={classes.title}>{title}</h3>
       <div className={classes.table}>

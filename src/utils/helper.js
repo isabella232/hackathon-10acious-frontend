@@ -1,3 +1,5 @@
+import { S3_BRANDS, CHART_COLOR_MAPPING } from "../data/filters"
+
 const slug = (str) => {
   str = str.replace(/^\s+|\s+$/g, "") // trim
   str = str.toLowerCase()
@@ -23,6 +25,7 @@ export const stringCompare = (str1, str2) => {
 
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 export const formatPercent = (num) => `${(num * 100).toFixed(2)}%`
+export const getPercent = (num) => (num * 100).toFixed(2)
 
 export const formatData = (rawData, section, dataType) => {
   if (section === 1) {
@@ -70,10 +73,43 @@ export const formatData = (rawData, section, dataType) => {
         admantx: d.admantx,
         // admantx: d.admantx.split("::"),
         percent: formatPercent(d.percentage_of_pageviews),
+        percentNumber: getPercent(d.percentage_of_pageviews),
         brand: capitalize(d.brand),
         month: d.month,
         monthId: d.monthId,
       }))
     }
   }
+}
+
+export const formatChartData = (data) => {
+  // const uniqueBrands = [...new Set(data.map((d) => d.brand))]
+  // const uniqueMonths = [
+  //   "Jan",
+  //   "Feb",
+  //   "Mar",
+  //   "Apr",
+  //   "May",
+  //   "Jun",
+  //   "Jul",
+  //   "Aug",
+  //   "Sept",
+  // ]
+  // [...new Set(data.map((d) => d.month))]
+  // console.log(uniqueBrands, uniqueMonths)
+
+  const finalData = S3_BRANDS.map((brand, i) => ({
+    key: i,
+    id: brand,
+    color: CHART_COLOR_MAPPING[brand],
+    data: data
+      .filter((row) => row.brand === brand)
+      .sort((a, b) => a.monthId - b.monthId)
+      .map((d) => ({
+        x: d.month,
+        y: d.percentNumber,
+        properties: d,
+      })),
+  }))
+  return finalData
 }

@@ -16,6 +16,7 @@ const styles = {
     alignItems: "center",
     flexDirection: "column",
     marginTop: "-6rem",
+    textAlign: "center",
   },
   heading: {
     // margin: 0,
