@@ -54,6 +54,26 @@ export const formatData = (rawData, section, dataType) => {
         brand: capitalize(d.brand),
         month: d.month,
       }))
+    } else if (dataType === "twitter") {
+      return rawData.map((d, i) => ({
+        id: i,
+        admantx: d.admantx,
+        // admantx: d.admantx.split("::"),
+        percent: formatPercent(d.percentageOfTweets),
+        brand: capitalize(d.brand),
+        month: d.month,
+        monthId: d.monthId,
+      }))
+    } else {
+      return rawData.map((d, i) => ({
+        id: i,
+        admantx: d.admantx,
+        // admantx: d.admantx.split("::"),
+        percent: formatPercent(d.percentage_of_pageviews),
+        brand: capitalize(d.brand),
+        month: d.month,
+        monthId: d.monthId,
+      }))
     }
   }
 }

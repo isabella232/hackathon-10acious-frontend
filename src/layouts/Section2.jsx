@@ -3,7 +3,7 @@ import withStyles from "react-jss"
 import { useCombobox } from "downshift"
 import { Table } from "../components"
 import { S2_TABLE_HEADINGS } from "../data/filters"
-import { condeTrendsDistribution } from "../data/conde-trends-distribution"
+import { trendsDistribution } from "../data/trends-distribution"
 import { stringCompare, formatData } from "../utils/helper"
 import colors from "../data/colors"
 import { borderRadius } from "../data/globalStyles"
@@ -142,10 +142,7 @@ const styles = {
 const Section2 = ({ classes }) => {
   const [mode, setMode] = useState("table") // viz || table
 
-  const INITIAL_DATA = useMemo(
-    () => formatData(condeTrendsDistribution, 2, "conde"),
-    []
-  )
+  const INITIAL_DATA = useMemo(() => formatData(trendsDistribution, 2), [])
 
   const TOPICS = useMemo(
     () => [...new Set(INITIAL_DATA.map((d) => d.admantx))],
@@ -251,7 +248,7 @@ const Section2 = ({ classes }) => {
               </div>
             </div>
             <div className={classes.dataTable}>
-              <Table columns={S2_TABLE_HEADINGS} data={data} />
+              <Table columns={S2_TABLE_HEADINGS} data={data} section={2} />
             </div>
           </>
         ) : (

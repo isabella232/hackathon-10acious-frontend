@@ -24,6 +24,6 @@ export const TABLE_HEADINGS = [
 export const S2_TABLE_HEADINGS = [
   "Admantx Labels",
   "Percentage of Pageviews",
-  // "Brand",
-  // "Month",
+  "Brand",
+  "Month",
 ]

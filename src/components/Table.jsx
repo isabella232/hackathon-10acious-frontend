@@ -9,7 +9,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     marginTop: "2rem",
-    width: "47%",
+    // width: "47%",
     marginBottom: "3rem",
   },
   table: {
@@ -85,9 +85,13 @@ const styles = {
   },
 }
 
-const Table = ({ classes, title, columns, data }) => {
+const Table = ({ classes, title, columns, data, section }) => {
   return (
-    <div className={classes.container}>
+    <div
+      className={classes.container}
+      style={{
+        width: section === 2 ? "100%" : "47%",
+      }}>
       <h3 className={classes.title}>{title}</h3>
       <div className={classes.table}>
         <div className={classes.th}>
@@ -103,8 +107,12 @@ const Table = ({ classes, title, columns, data }) => {
             <div className={classes.row} key={d.id}>
               <div className={classes.td}>{d.admantx}</div>
               <div className={classes.td}>{d.percent}</div>
-              {/* <div className={classes.td}>{d.brand}</div>
-              <div className={classes.td}>{d.month}</div> */}
+              {section === 2 ? (
+                <>
+                  <div className={classes.td}>{d.brand}</div>
+                  <div className={classes.td}>{d.month}</div>
+                </>
+              ) : null}
             </div>
           ))}
         </div>
