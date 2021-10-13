@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/hackathon-10acious-frontend/static/js/main.58d270f1.chunk.js",
-    "main.js.map": "/hackathon-10acious-frontend/static/js/main.58d270f1.chunk.js.map",
-    "runtime-main.js": "/hackathon-10acious-frontend/static/js/runtime-main.dddbed17.js",
-    "runtime-main.js.map": "/hackathon-10acious-frontend/static/js/runtime-main.dddbed17.js.map",
-    "static/js/2.d1ee47bf.chunk.js": "/hackathon-10acious-frontend/static/js/2.d1ee47bf.chunk.js",
-    "static/js/2.d1ee47bf.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.d1ee47bf.chunk.js.map",
-    "static/js/3.139f77a5.chunk.js": "/hackathon-10acious-frontend/static/js/3.139f77a5.chunk.js",
-    "static/js/3.139f77a5.chunk.js.map": "/hackathon-10acious-frontend/static/js/3.139f77a5.chunk.js.map",
-    "static/js/4.edc4d93f.chunk.js": "/hackathon-10acious-frontend/static/js/4.edc4d93f.chunk.js",
-    "static/js/4.edc4d93f.chunk.js.map": "/hackathon-10acious-frontend/static/js/4.edc4d93f.chunk.js.map",
+    "main.js": "/hackathon-10acious-frontend/static/js/main.08112cc3.chunk.js",
+    "main.js.map": "/hackathon-10acious-frontend/static/js/main.08112cc3.chunk.js.map",
+    "runtime-main.js": "/hackathon-10acious-frontend/static/js/runtime-main.ad34bf0b.js",
+    "runtime-main.js.map": "/hackathon-10acious-frontend/static/js/runtime-main.ad34bf0b.js.map",
+    "static/js/2.afe7c11e.chunk.js": "/hackathon-10acious-frontend/static/js/2.afe7c11e.chunk.js",
+    "static/js/2.afe7c11e.chunk.js.map": "/hackathon-10acious-frontend/static/js/2.afe7c11e.chunk.js.map",
+    "static/js/3.e3a764f2.chunk.js": "/hackathon-10acious-frontend/static/js/3.e3a764f2.chunk.js",
+    "static/js/3.e3a764f2.chunk.js.map": "/hackathon-10acious-frontend/static/js/3.e3a764f2.chunk.js.map",
+    "static/js/4.ff711bcf.chunk.js": "/hackathon-10acious-frontend/static/js/4.ff711bcf.chunk.js",
+    "static/js/4.ff711bcf.chunk.js.map": "/hackathon-10acious-frontend/static/js/4.ff711bcf.chunk.js.map",
     "index.html": "/hackathon-10acious-frontend/index.html",
-    "static/js/2.d1ee47bf.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.d1ee47bf.chunk.js.LICENSE.txt",
-    "static/js/3.139f77a5.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/3.139f77a5.chunk.js.LICENSE.txt",
+    "static/js/2.afe7c11e.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/2.afe7c11e.chunk.js.LICENSE.txt",
+    "static/js/3.e3a764f2.chunk.js.LICENSE.txt": "/hackathon-10acious-frontend/static/js/3.e3a764f2.chunk.js.LICENSE.txt",
     "static/media/AndadaPro-Regular.0c19c230.ttf": "/hackathon-10acious-frontend/static/media/AndadaPro-Regular.0c19c230.ttf",
     "static/media/Sora-Bold.5255f50b.ttf": "/hackathon-10acious-frontend/static/media/Sora-Bold.5255f50b.ttf",
     "static/media/Sora-ExtraBold.fcb78f93.ttf": "/hackathon-10acious-frontend/static/media/Sora-ExtraBold.fcb78f93.ttf",
@@ -23,8 +23,8 @@
     "static/media/chevrons-up.2d9ad23c.svg": "/hackathon-10acious-frontend/static/media/chevrons-up.2d9ad23c.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.dddbed17.js",
-    "static/js/2.d1ee47bf.chunk.js",
-    "static/js/main.58d270f1.chunk.js"
+    "static/js/runtime-main.ad34bf0b.js",
+    "static/js/2.afe7c11e.chunk.js",
+    "static/js/main.08112cc3.chunk.js"
   ]
 }
