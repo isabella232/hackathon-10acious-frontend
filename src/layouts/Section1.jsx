@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useMemo } from "react"
+import React, { useState, useEffect, useMemo, forwardRef } from "react"
 import withStyles from "react-jss"
 import { Table, BarChart } from "../components"
 import {
   MONTH_LABELS,
   FASHION_BRANDS,
-  TABLE_HEADINGS,
   TABLE_HEADINGS_TWITTER,
   TABLE_HEADINGS_CONDE,
 } from "../data/filters"
@@ -32,6 +31,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+    margin: "4rem 0",
   },
   wrapper: {
     display: "flex",
@@ -41,6 +41,9 @@ const styles = {
   },
   sectionTitle: {
     fontSize: "calc(22px + (32 - 22) * ((100vw - 300px) / (1600 - 300)))",
+  },
+  description: {
+    lineHeight: "1.4",
   },
   filters: {
     display: "flex",
@@ -91,14 +94,18 @@ const styles = {
   vizContainer: {
     width: "50%",
     height: "120vh",
+    maxHeight: "1200px",
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
   },
+  wordCloud: {
+    width: "90%",
+  },
 }
 
-const Section1 = ({ classes }) => {
-  const [mode, setMode] = useState("table") // viz || table
+const Section1 = ({ classes }, ref) => {
+  const [mode, setMode] = useState("viz") // viz || table
 
   const months = MONTH_LABELS.map((d, i) => ({
     text: d,
@@ -152,6 +159,7 @@ const Section1 = ({ classes }) => {
     setTwitterData(
       INITIAL_TWITTER_DATA.filter((d) => stringCompare(d.month, month))
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters])
 
   useEffect(() => {
@@ -166,14 +174,38 @@ const Section1 = ({ classes }) => {
 
   const renderBrandWordCloud = ({ month, brand }) => {
     if (month === MONTH_LABELS[0]) {
-      if (brand === FASHION_BRANDS[1]) {
-        return <img src={AllureWC} alt="Word cloud of Allure's top keywords" />
+      if (brand === FASHION_BRANDS[0]) {
+        return (
+          <img
+            className={classes.wordCloud}
+            src={AllBrandsWC}
+            alt="Word cloud of all brand's top keywords"
+          />
+        )
+      } else if (brand === FASHION_BRANDS[1]) {
+        return (
+          <img
+            className={classes.wordCloud}
+            src={AllureWC}
+            alt="Word cloud of Allure's top keywords"
+          />
+        )
       } else if (brand === FASHION_BRANDS[2]) {
         return (
-          <img src={GlamourWC} alt="Word cloud of Glamour's top keywords" />
+          <img
+            className={classes.wordCloud}
+            src={GlamourWC}
+            alt="Word cloud of Glamour's top keywords"
+          />
         )
       } else if (brand === FASHION_BRANDS[3]) {
-        return <img src={VogueWC} alt="Word cloud of Vogue's top keywords" />
+        return (
+          <img
+            className={classes.wordCloud}
+            src={VogueWC}
+            alt="Word cloud of Vogue's top keywords"
+          />
+        )
       }
       return null
     }
@@ -183,41 +215,45 @@ const Section1 = ({ classes }) => {
   const renderTwitterWordCloud = ({ month }) => {
     if (month === MONTH_LABELS[0]) {
       return (
-        <img src={TwitterWC} alt="Word cloud of top tweet's top keywords" />
+        <img
+          className={classes.wordCloud}
+          src={TwitterWC}
+          alt="Word cloud of top tweet's top keywords"
+        />
       )
     }
     return null
   }
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} ref={ref}>
       <div className={classes.wrapper}>
-        <h1 className={classes.sectionTitle}>Section 1</h1>
+        <h1 className={classes.sectionTitle}>
+          Percentage of Articles & Tweets by Topic
+        </h1>
         <p className={classes.description}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          The tables below show Condé Nast and Twitter topic categories,
+          alongside the percentage of articles or tweets that topic makes up on
+          their respective platforms/sites. We focus on the{" "}
+          <b>fashion category</b> in this dashboard, with aligned topics from
+          Condé and Twitter. The topics are derived from Condé Nast’s Admantx
+          taxonomy and Twitter’s trending topics list. You can filter by month
+          and brand (Allue, Glamour, Vogue).
         </p>
         <div className={classes.filters}>
-          <button
-            className={`${mode === "table" ? classes.activeButton : ""} ${
-              classes.button
-            }`}
-            onClick={() => setMode("table")}>
-            Data as a table!
-          </button>
           <button
             className={`${mode === "viz" ? classes.activeButton : ""} ${
               classes.button
             }`}
             onClick={() => setMode("viz")}>
             Visualize the data!
+          </button>
+          <button
+            className={`${mode === "table" ? classes.activeButton : ""} ${
+              classes.button
+            }`}
+            onClick={() => setMode("table")}>
+            Data as a table
           </button>
         </div>
         <div className={classes.filters}>
@@ -247,7 +283,7 @@ const Section1 = ({ classes }) => {
             <>
               <Table
                 title={
-                  filters.brand === FASHION_BRANDS[0] ? "Conde" : filters.brand
+                  filters.brand === FASHION_BRANDS[0] ? "Condé" : filters.brand
                 }
                 columns={TABLE_HEADINGS_CONDE}
                 data={data}
@@ -267,7 +303,7 @@ const Section1 = ({ classes }) => {
                   data={barChartData}
                   title={
                     filters.brand === FASHION_BRANDS[0]
-                      ? "Conde"
+                      ? "Condé"
                       : filters.brand
                   }
                 />
@@ -285,4 +321,4 @@ const Section1 = ({ classes }) => {
   )
 }
 
-export default withStyles(styles)(Section1)
+export default withStyles(styles)(forwardRef(Section1))

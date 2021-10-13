@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react"
+import React, { useState, useEffect, useMemo, forwardRef } from "react"
 import withStyles from "react-jss"
 import { useCombobox } from "downshift"
 import { Chart, Table } from "../components"
@@ -14,7 +14,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
-    marginBottom: "4rem",
+    margin: "4rem 0",
   },
   wrapper: {
     display: "flex",
@@ -24,6 +24,9 @@ const styles = {
   },
   sectionTitle: {
     fontSize: "calc(22px + (32 - 22) * ((100vw - 300px) / (1600 - 300)))",
+  },
+  description: {
+    lineHeight: "1.4",
   },
   filters: {
     display: "flex",
@@ -143,8 +146,8 @@ const styles = {
   },
 }
 
-const Section2 = ({ classes }) => {
-  const [mode, setMode] = useState("table") // viz || table
+const Section2 = ({ classes }, ref) => {
+  const [mode, setMode] = useState("viz") // viz || table
 
   const INITIAL_DATA = useMemo(() => formatData(trendsDistribution, 2), [])
 
@@ -167,7 +170,9 @@ const Section2 = ({ classes }) => {
     getItemProps,
   } = useCombobox({
     items: TOPICS,
-    defaultSelectedItem: TOPICS[0],
+    defaultSelectedItem: TOPICS.filter((d) =>
+      d.includes("style and fashion")
+    )[0],
     onInputValueChange: ({ inputValue }) => {
       setDropdown(
         TOPICS.filter((item) =>
@@ -187,6 +192,7 @@ const Section2 = ({ classes }) => {
       setData(
         INITIAL_DATA.filter((d) => stringCompare(d.admantx, activeFilter))
       )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilter])
 
   useEffect(() => {
@@ -197,28 +203,27 @@ const Section2 = ({ classes }) => {
   }, [data])
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} ref={ref}>
       <div className={classes.wrapper}>
-        <h1 className={classes.sectionTitle}>Section 2</h1>
+        <h1 className={classes.sectionTitle}>
+          Percentage of Pageviews & Tweets by Brand, Month, & Topic
+        </h1>
         <p className={classes.description}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          The table below details the percentage of Condé Nast article pageviews
+          and tweets on Twitter by topic, brand (Allure, Glamour, Vogue,
+          Twitter), and month. You can use the filter to select specific topics,
+          such as{" "}
+          <b>
+            <em>style and fashion::street style</em>
+          </b>
+          .
+        </p>
+        <p className={classes.description}>
+          The visualization illustrates the percentage of pageviews/tweets over
+          time by brand, month, and topic, which can be chosen via the topic
+          dropdown menu.
         </p>
         <div className={classes.filters}>
-          <button
-            className={`${mode === "table" ? classes.activeButton : ""} ${
-              classes.button
-            }`}
-            onClick={() => setMode("table")}>
-            Data as a table!
-          </button>
           <button
             className={`${mode === "viz" ? classes.activeButton : ""} ${
               classes.button
@@ -226,11 +231,18 @@ const Section2 = ({ classes }) => {
             onClick={() => setMode("viz")}>
             Visualize the data!
           </button>
+          <button
+            className={`${mode === "table" ? classes.activeButton : ""} ${
+              classes.button
+            }`}
+            onClick={() => setMode("table")}>
+            Data as a table
+          </button>
         </div>
         <div className={classes.tableOrViz}>
           <div className={classes.tableFilters}>
             <label className={classes.selectLabel} {...getLabelProps()}>
-              Choose an topic:
+              Choose a topic
             </label>
             <div className={classes.select}>
               <div {...getComboboxProps()} className={classes.fullWidth}>
@@ -286,4 +298,4 @@ const Section2 = ({ classes }) => {
   )
 }
 
-export default withStyles(styles)(Section2)
+export default withStyles(styles)(forwardRef(Section2))

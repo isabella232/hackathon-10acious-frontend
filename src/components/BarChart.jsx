@@ -1,8 +1,6 @@
 import React from "react"
 import withStyles from "react-jss"
 import { ResponsiveBar } from "@nivo/bar"
-import { Text } from "@vx/text"
-import colors from "../data/colors"
 
 const styles = {
   container: {

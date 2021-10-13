@@ -3,7 +3,10 @@ import withStyles from "react-jss"
 import colors from "../data/colors"
 import useWindowSize from "../hooks/useWindowSize"
 import { borderRadius } from "../data/globalStyles"
-import { Up, Down } from "../assets/icons"
+import {
+  // Up,
+  Down,
+} from "../assets/icons"
 import { Glamour, Allure, Vogue, Twitter } from "../assets/images"
 
 const styles = {

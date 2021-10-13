@@ -23,6 +23,13 @@ export const stringCompare = (str1, str2) => {
   return slug(str1) === slug(str2)
 }
 
+const removePrefix = (label) => {
+  const parts = label.split("::")
+  // console.log(parts)
+  const requiredParts = parts.filter((d) => d !== "TOPICS")
+  // console.log(requiredParts.join("::"))
+  return requiredParts.join("::")
+}
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 export const formatPercent = (num) => `${(num * 100).toFixed(2)}%`
 export const getPercent = (num) => (num * 100).toFixed(2)
@@ -32,8 +39,7 @@ export const formatData = (rawData, section, dataType) => {
     if (dataType === "conde") {
       return rawData.map((d, i) => ({
         id: i,
-        admantx: d.admantx,
-        // admantx: d.admantx.split("::"),
+        admantx: removePrefix(d.admantx),
         percent: formatPercent(d.percentageOfArticles),
         percentNumber: getPercent(d.percentageOfArticles),
         brand: capitalize(d.brand),
@@ -42,8 +48,7 @@ export const formatData = (rawData, section, dataType) => {
     } else if (dataType === "twitter") {
       return rawData.map((d, i) => ({
         id: i,
-        admantx: d.admantx,
-        // admantx: d.admantx.split("::"),
+        admantx: removePrefix(d.admantx),
         percent: formatPercent(d.percentageOfTweets),
         percentNumber: getPercent(d.percentageOfTweets),
         month: d.month,
@@ -53,8 +58,7 @@ export const formatData = (rawData, section, dataType) => {
     if (dataType === "conde") {
       return rawData.map((d, i) => ({
         id: i,
-        admantx: d.admantx,
-        // admantx: d.admantx.split("::"),
+        admantx: removePrefix(d.admantx),
         percent: formatPercent(d.percentageOfPageviews),
         brand: capitalize(d.brand),
         month: d.month,
@@ -62,8 +66,7 @@ export const formatData = (rawData, section, dataType) => {
     } else if (dataType === "twitter") {
       return rawData.map((d, i) => ({
         id: i,
-        admantx: d.admantx,
-        // admantx: d.admantx.split("::"),
+        admantx: removePrefix(d.admantx),
         percent: formatPercent(d.percentageOfTweets),
         brand: capitalize(d.brand),
         month: d.month,
@@ -72,8 +75,7 @@ export const formatData = (rawData, section, dataType) => {
     } else {
       return rawData.map((d, i) => ({
         id: i,
-        admantx: d.admantx,
-        // admantx: d.admantx.split("::"),
+        admantx: removePrefix(d.admantx),
         percent: formatPercent(d.percentage_of_pageviews),
         percentNumber: getPercent(d.percentage_of_pageviews),
         brand: capitalize(d.brand),
@@ -128,5 +130,20 @@ export const formatBarChartTwitterData = (data) => {
     id: d.admantx,
     percent: d.percentNumber,
     properties: d,
+  }))
+}
+
+const calculateDate = (pythonTimeString) => {
+  const dateString = pythonTimeString.split("T")[0]
+  const yyyymmdd = dateString.split("-").map((d) => Number(d))
+  return new Date(yyyymmdd[0], yyyymmdd[1] - 1, yyyymmdd[2])
+}
+
+export const formatForecastData = (data) => {
+  return data.map((d, i) => ({
+    id: i,
+    date: calculateDate(d.time),
+    admantx: removePrefix(d.admantx),
+    value: getPercent(d.value),
   }))
 }
