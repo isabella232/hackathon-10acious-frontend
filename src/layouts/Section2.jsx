@@ -23,7 +23,7 @@ const styles = {
     maxWidth: "1100px",
   },
   sectionTitle: {
-    fontSize: "calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)))",
+    fontSize: "calc(22px + (32 - 22) * ((100vw - 300px) / (1600 - 300)))",
   },
   filters: {
     display: "flex",

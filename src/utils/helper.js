@@ -35,6 +35,7 @@ export const formatData = (rawData, section, dataType) => {
         admantx: d.admantx,
         // admantx: d.admantx.split("::"),
         percent: formatPercent(d.percentageOfArticles),
+        percentNumber: getPercent(d.percentageOfArticles),
         brand: capitalize(d.brand),
         month: d.month,
       }))
@@ -44,6 +45,7 @@ export const formatData = (rawData, section, dataType) => {
         admantx: d.admantx,
         // admantx: d.admantx.split("::"),
         percent: formatPercent(d.percentageOfTweets),
+        percentNumber: getPercent(d.percentageOfTweets),
         month: d.month,
       }))
     }
@@ -96,7 +98,6 @@ export const formatChartData = (data) => {
   //   "Sept",
   // ]
   // [...new Set(data.map((d) => d.month))]
-  // console.log(uniqueBrands, uniqueMonths)
 
   const finalData = S3_BRANDS.map((brand, i) => ({
     key: i,
@@ -112,4 +113,20 @@ export const formatChartData = (data) => {
       })),
   }))
   return finalData
+}
+
+export const formatBarChartData = (data) => {
+  return data.map((d) => ({
+    id: d.admantx,
+    percent: d.percentNumber,
+    properties: d,
+  }))
+}
+
+export const formatBarChartTwitterData = (data) => {
+  return data.map((d) => ({
+    id: d.admantx,
+    percent: d.percentNumber,
+    properties: d,
+  }))
 }

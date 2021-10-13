@@ -21,7 +21,9 @@ const Chart = ({ classes, data }) => {
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
         xScale={{ type: "point" }}
         yScale={{ type: "linear" }}
+        yFormat={(val) => `${Math.round(val)}%`}
         colors={(d) => d.color}
+        lineWidth={3}
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -62,15 +64,6 @@ const Chart = ({ classes, data }) => {
             symbolSize: 13,
             symbolShape: "circle",
             symbolBorderColor: "rgba(0, 0, 0, .5)",
-            // effects: [
-            //   {
-            //     on: "hover",
-            //     style: {
-            //       itemBackground: "rgba(0, 0, 0, .03)",
-            //       itemOpacity: 1,
-            //     },
-            //   },
-            // ],
           },
         ]}
       />

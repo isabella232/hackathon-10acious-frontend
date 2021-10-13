@@ -10,6 +10,11 @@ const colors = {
   tableHeaderText: "#9899ab",
   tableRowBG: "#fafafc",
   purple: "#241dc3",
+  glamour: "rgb(237, 189, 193)",
+  glamourText: "rgb(54, 52, 50)",
+  allure: "#dc5b5e",
+  vogue: "#4e4e4e",
+  twitterBlue: "#1d9bf9",
 }
 
 export default colors

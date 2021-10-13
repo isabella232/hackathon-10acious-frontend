@@ -1,3 +1,5 @@
+import colors from "./colors"
+
 export const MONTH_LABELS = [
   "All Months",
   "Jan",
@@ -49,10 +51,18 @@ export const S3_MONTHS = [
   "Sept",
 ]
 
-const colors = ["#0466c8", "#78290f", "#f77f00", "#2a9d8f"]
+const chartcolors = [
+  colors.glamour,
+  // "#0466c8",
+  colors.vogue,
+  // "#f77f00",
+  colors.allure,
+  // "#2a9d8f"
+  colors.twitterBlue,
+]
 export const CHART_COLOR_MAPPING = {
-  Glamour: colors[0],
-  Vogue: colors[1],
-  Allure: colors[2],
-  Twitter: colors[3],
+  Glamour: chartcolors[0],
+  Vogue: chartcolors[1],
+  Allure: chartcolors[2],
+  Twitter: chartcolors[3],
 }

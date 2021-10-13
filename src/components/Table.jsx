@@ -4,6 +4,7 @@ import colors from "../data/colors"
 import useWindowSize from "../hooks/useWindowSize"
 import { borderRadius } from "../data/globalStyles"
 import { Up, Down } from "../assets/icons"
+import { Glamour, Allure, Vogue, Twitter } from "../assets/images"
 
 const styles = {
   container: {
@@ -36,6 +37,9 @@ const styles = {
     zIndex: 10,
     "& > :nth-child(2)": {
       justifyContent: "flex-end",
+    },
+    "& > :nth-child(3)": {
+      justifyContent: "center",
     },
   },
   td: {
@@ -83,10 +87,89 @@ const styles = {
     width: "20px",
     margin: "0 0 0 5px",
   },
+  allure: {
+    borderRadius: borderRadius,
+    background: colors.allure,
+    color: colors.white,
+    fontWeight: 400,
+    border: `1px solid ${colors.allure}`,
+  },
+  glamour: {
+    borderRadius: borderRadius,
+    background: colors.glamour,
+    color: colors.black,
+    fontWeight: 400,
+    border: `1px solid ${colors.glamour}`,
+  },
+  vogue: {
+    borderRadius: borderRadius,
+    background: colors.white,
+    color: colors.vogue,
+    fontWeight: 400,
+    border: `1px solid ${colors.vogue}`,
+  },
+  twitter: {
+    borderRadius: borderRadius,
+    background: colors.twitterBlue,
+    color: colors.white,
+    fontWeight: 400,
+    border: `1px solid ${colors.twitterBlue}`,
+  },
+  green: {
+    borderRadius: borderRadius,
+    background: colors.green,
+    color: colors.white,
+    fontWeight: 400,
+  },
+  imageContainer: {
+    width: "30px",
+    height: "20px",
+    display: "flex",
+    justifyContent: "center",
+  },
+  image: {
+    width: "50%",
+    objectFit: "cover",
+  },
+  twitterImg: {
+    width: "50px",
+    objectFit: "cover",
+  },
 }
 
 const Table = ({ classes, title, columns, data, section }) => {
   const { width } = useWindowSize()
+  const renderBrand = (brand) => {
+    if (brand === "Vogue")
+      return (
+        <div className={`${classes.td} ${classes.imageContainer}`}>
+          <img className={classes.image} src={Vogue} alt="Vogue" />
+          {/* {brand} */}
+        </div>
+      )
+    else if (brand === "Allure")
+      return (
+        <div className={`${classes.td} ${classes.imageContainer}`}>
+          {/* {brand} */}
+          <img className={classes.image} src={Allure} alt="Allure" />
+        </div>
+      )
+    else if (brand === "Glamour")
+      return (
+        <div className={`${classes.td} ${classes.imageContainer}`}>
+          {/* {brand} */}
+          <img className={classes.image} src={Glamour} alt="Glamour" />
+        </div>
+      )
+    if (brand === "Twitter")
+      return (
+        <div className={`${classes.td} ${classes.imageContainer}`}>
+          {/* {brand} */}
+          <img className={classes.twitterImg} src={Twitter} alt="Twitter" />
+        </div>
+      )
+    // else return <div className={classes.td}>{brand}</div>
+  }
   return (
     <div
       className={classes.container}
@@ -105,12 +188,30 @@ const Table = ({ classes, title, columns, data, section }) => {
         </div>
         <div className={classes.body}>
           {data.map((d) => (
-            <div className={classes.row} key={d.id}>
+            <div
+              className={classes.row}
+              key={d.id}
+              // style={{
+              //   fontWeight: d.brand === "Twitter" ? 600 : 400,
+              // }}
+            >
               <div className={classes.td}>{d.admantx}</div>
-              <div className={classes.td}>{d.percent}</div>
+              {/* <div className={classes.td}>{d.percent}</div> */}
+              {section === 2 ? (
+                d.brand === "Twitter" ? (
+                  <div className={`${classes.td} ${classes.green}`}>
+                    {d.percent}
+                  </div>
+                ) : (
+                  <div className={classes.td}>{d.percent}</div>
+                )
+              ) : (
+                <div className={classes.td}>{d.percent}</div>
+              )}
               {section === 2 ? (
                 <>
-                  <div className={classes.td}>{d.brand}</div>
+                  {renderBrand(d.brand)}
+                  {/* <div className={classes.td}>{d.brand}</div> */}
                   <div className={classes.td}>{d.month}</div>
                 </>
               ) : null}
